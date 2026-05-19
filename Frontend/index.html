@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Multimodal AI Assistant</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main class="app-shell">
+    <aside class="recent-sidebar">
+      <div class="recent-header">
+        <h2>Recent Chats</h2>
+        <button class="new-chat-button" id="newChatButton" type="button">+ New</button>
+      </div>
+      <div class="recent-list" id="recentList"></div>
+    </aside>
+
+    <section class="chat-panel">
+      <header class="chat-header">
+        <div class="brand">
+          <div class="brand-icon">AI</div>
+          <div>
+            <h1>Multimodal AI Assistant</h1>
+            <p>Ask general questions or upload documents for file-based answers.</p>
+          </div>
+        </div>
+
+        <div class="header-actions">
+          <span class="file-chip" id="fileChip">No files</span>
+          <label class="font-size-control" for="fontSizeSelect">
+            <span>Font</span>
+            <select id="fontSizeSelect">
+              <option value="small">Small</option>
+              <option value="medium">Medium</option>
+              <option value="large">Large</option>
+            </select>
+          </label>
+          <button class="theme-toggle" id="themeToggle" type="button" aria-label="Switch theme">
+            <span id="themeIcon">Light</span>
+          </button>
+          <span class="status-dot">Ready</span>
+        </div>
+      </header>
+
+      <div class="chat-window" id="chatWindow"></div>
+
+      <form class="chat-input-area" id="chatForm">
+        <button class="attach-button" id="attachButton" type="button" title="Add files">+</button>
+        <input id="fileInput" type="file" multiple hidden>
+        <input
+          id="questionInput"
+          type="text"
+          placeholder="Ask anything, or ask about your documents..."
+          autocomplete="off"
+        >
+        <button class="send-button" type="submit">Send</button>
+      </form>
+    </section>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>

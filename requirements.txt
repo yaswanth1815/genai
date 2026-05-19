@@ -1,0 +1,11 @@
+genai==2.1.0
+groq==1.2.0
+langchain_community==0.4.1
+langchain_text_splitters==1.1.2
+pinecone==9.0.0
+pymongo==4.17.0
+python-dotenv==1.2.2
+python_docx==1.2.0
+sentence_transformers==5.5.0
+spacy==3.8.14
+symspellpy==6.9.0
