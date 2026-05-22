@@ -11,7 +11,7 @@ def audio_query(audio_url):
 
     # actual code
     text=audio_to_text.speech_to_text(audio_url)
-    query_pipeline(text)
+    return text
 
 def query_pipeline(query):
 
@@ -53,12 +53,12 @@ def idp_pipeline(*url):
 
 print("Hey Hello whats Up!")
 while(True):
-    user_query=input("Enter Your Query (for audio query enter speech) (to exit enter exit)")
+    user_query=input("Enter Your Query (v=Voice Input) (e=Exit)")
 
-    if user_query.lower()=="exit":
+    if user_query.lower()=="e":
         print("Session Closed")
         break
-    if user_query.lower()=="speech":
+    if user_query.lower()=="v":
         audio_input.record_audio()
         user_query=audio_query(r"data\audio_file.wav")
 

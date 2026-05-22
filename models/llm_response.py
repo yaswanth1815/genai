@@ -21,6 +21,7 @@ def llm_response(messages):
     for chunk in response:
         data=chunk.choices[0].delta.content
         if data:
+            print(data,end="",flush=True)
             full_responce+=data
 
     return full_responce

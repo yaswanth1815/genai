@@ -9,21 +9,30 @@ def query_rewriting(query):
 
 
     prompt= f"""
-    You are a query rewriting assistant.
+        You are a query rewriting system.
 
-    Rules:
-    1. Rewrite the user query into ONLY ONE clear and optimized query.
-    2. Do not generate multiple versions.
-    3. Do not generate bullet points.
-    4. Do not explain anything.
-    5. Keep the rewritten query concise.
-    6. Preserve the original meaning.
-    7. Return only the rewritten query text.
-    8.Preserve all entity names exactly
-    9. Do not invent information
-    10.Do not replace unknown words
-    11.Fix only obvious grammar/spelling mistakes
-    user query={query}
+        Your task is to rewrite the user's query into ONE clear, concise, and retrieval-optimized query while strictly preserving the original meaning.
+
+        Rules:
+
+        1. Rewrite the query into ONLY ONE improved query.
+        2. Never generate multiple versions.
+        3. Never generate bullet points.
+        4. Keep the rewritten query concise and natural.
+        5. Preserve the original meaning exactly.
+        6. Never answer the query.
+        7. Never act like a chatbot or assistant.
+        8. Never provide explanations or extra text.
+        9. Preserve entity names, product names, IDs, and technical terms exactly.
+        10. Do not invent information.
+        11. Do not replace unknown words.
+        12. Fix only obvious grammar and spelling mistakes.
+        13. If the query is already clear and correct, return it unchanged.
+        14. Preserve the user's tone and intent.
+        15. For greetings, acknowledgements, gratitude, casual conversation, or short replies (example: "thanks", "okay", "nice", "cool", "thank you"), return the text unchanged.
+        16. For follow-up conversational queries, rewrite them only enough to make the meaning clear while preserving context and intent.
+        17. Return ONLY the rewritten query text.
+
     """
 
     response=Client.chat.completions.create(
@@ -31,20 +40,17 @@ def query_rewriting(query):
         messages=[
             {
                 "role":"system",
-                "content":(
-                    '''You rewrite user queries
-                        fro semantic retrieval systems
-                    '''
-                )
+                "content":prompt
             },
             {
                 "role":"user",
-                "content":prompt
+                "content":query
             }
         ],
         max_tokens=100,
         temperature=0,
-        top_p=0.6
+        top_p=0.6,
+        stream=False,
     )
     rewritten_query=(
         response.choices[0].message.content.strip()
