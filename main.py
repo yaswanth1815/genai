@@ -64,4 +64,3 @@ while(True):
 
     rewritten_query,final_answer=query_pipeline(user_query)
     store_chats.store_chat(session_id,user_query,rewritten_query,final_answer)
-    print(final_answer)
