@@ -23,6 +23,6 @@ def llm_response(messages):
         if data:
             print(data,end="",flush=True)
             full_responce+=data
-
+    print()
     return full_responce
     
